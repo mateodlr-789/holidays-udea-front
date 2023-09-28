@@ -1,12 +1,6 @@
 <mat-toolbar color="primary">
-  <mat-toolbar-row>
-    <span>Rocketfy App</span>
-    <span class="spacer"></span>
-    <button mat-icon-button aria-label="Ejemplo de botón">
-      <mat-icon>account_circle</mat-icon>
-    </button>
-    <button mat-icon-button aria-label="Ejemplo de botón">
-      <mat-icon>shopping_cart</mat-icon>
-    </button>
+  <mat-toolbar-row class="toolbar">
+    <span >Rocketfy App</span>
+    <button mat-button (click)="goToProducts()">Productos</button>
   </mat-toolbar-row>
 </mat-toolbar>

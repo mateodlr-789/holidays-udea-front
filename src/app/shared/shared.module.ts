@@ -4,11 +4,13 @@ import { CommonModule } from '@angular/common';
 import { NavbarComponent } from './navbar/navbar.component';
 import { MaterialModule } from '../material/material.module';
 import { LoaderComponent } from './loader/loader.component';
+import { FooterComponent } from './footer/footer.component';
 
 @NgModule({
   declarations: [
     NavbarComponent,
     LoaderComponent,
+    FooterComponent,
   ],
   imports: [
     CommonModule,
@@ -16,7 +18,8 @@ import { LoaderComponent } from './loader/loader.component';
   ],
   exports: [
     NavbarComponent,
-    LoaderComponent
+    LoaderComponent,
+    FooterComponent
   ]
 })
 export class SharedModule { }

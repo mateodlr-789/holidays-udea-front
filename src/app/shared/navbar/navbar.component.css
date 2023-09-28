@@ -1,0 +1,17 @@
+.toolbar {
+  justify-content: space-between;
+  color: #FFF;
+  background-color: #003B4A;
+}
+
+.toolbar button {
+  background-color: transparent;
+  color: #FFF;
+  text-decoration: none;
+  border: none;
+  font-size: 18px;
+  cursor: pointer;
+  &:hover {
+    background-color: transparent;
+  }
+}
