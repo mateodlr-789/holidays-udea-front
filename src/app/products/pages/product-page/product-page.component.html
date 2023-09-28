@@ -41,8 +41,13 @@
     </div>
     <div class="product-actions"> 
       <button mat-raised-button class="update-button" (click)="updateProduct()">Actualizar</button>
-      <button mat-raised-button class="delete-button">Eliminar</button>
+      <button mat-raised-button class="delete-button" (click)="deleteProduct()">Eliminar</button>
     </div>
     
   </div>
+</div>
+
+<div *ngIf="!isLoading && !product" class="not-found" style="padding: 50px;">
+  <h2>No hemos encontrado el producto con el identificador: {{ productId }}</h2>
+  <button mat-raised-button color="primary" (click)="goToProducts()">Ver más productos</button>
 </div>

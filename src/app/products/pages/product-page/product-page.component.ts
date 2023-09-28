@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ProductsService } from '../../services/products.service';
 import { Product } from '../../interfaces/products';
 import { MatDialog } from '@angular/material/dialog';
@@ -12,7 +12,7 @@ import { ProductPopupComponent } from '../../components/product-popup/product-po
 })
 export class ProductPageComponent {
 
-  private productId: string = "";
+  public productId: string = "";
   public product: Product | null = null;
   public isLoading: boolean = true;
   public defaultImageUrl = '../../assets/images/common/noImage.jpg';
@@ -20,6 +20,7 @@ export class ProductPageComponent {
   constructor(
     private route: ActivatedRoute,
     private dialog: MatDialog,
+    private router: Router,
     private productsService: ProductsService
   ) { }
 
@@ -58,5 +59,15 @@ export class ProductPageComponent {
 		dialogRef.afterClosed().subscribe((reload) => {
       if (reload) this.loadProduct();
 		});
+  }
+
+  public goToProducts() {
+    this.router.navigate(['/products']);
+  }
+
+  public async deleteProduct() {
+    this.productsService.deleteProduct(this.productId).subscribe(() => {
+      this.goToProducts();
+    });
   }
 }

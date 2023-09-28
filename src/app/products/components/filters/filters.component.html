@@ -1,32 +1,32 @@
-<form class="filters-container">
-
+<form class="filters-container" [formGroup]="filterForm" (ngSubmit)="onFilter()" >
   <div>
     <mat-form-field class="filter">
-      <mat-label>Email</mat-label>
-      <input
-        type="email"
-        matInput
-        placeholder="Ex. pat@example.com"
-      />
-      <mat-hint>Errors appear instantly!</mat-hint>
-      <mat-error *ngIf="false"> Please enter a valid email address </mat-error>
-      <mat-error *ngIf="false"> Email is <strong>required</strong> </mat-error>
+      <mat-label>Buscar</mat-label>
+      <input type="text" matInput class="filter-input" formControlName="search"/>
+      <mat-icon matSuffix>search</mat-icon>
     </mat-form-field>
-    
+
     <mat-form-field class="filter">
-      <mat-label>Email</mat-label>
-      <input
-        type="email"
-        matInput
-        placeholder="Ex. pat@example.com"
-      />
-      <mat-hint>Errors appear instantly!</mat-hint>
-      <mat-error *ngIf="false"> Please enter a valid email address </mat-error>
-      <mat-error *ngIf="false"> Email is <strong>required</strong> </mat-error>
+      <mat-label>Filtrar por</mat-label>
+      <mat-select formControlName="filterBy">
+        <mat-option *ngFor="let filter of filterOptions" [value]="filter.value">
+          {{ filter.label }}
+        </mat-option>
+      </mat-select>
     </mat-form-field>
-  </div>
-  <div class="filters-actions">
-    <button mat-raised-button color="primary">Filtrar</button>
+
+    <mat-form-field class="filter">
+      <mat-label>Ordenar por</mat-label>
+      <mat-select formControlName="orderBy">
+        <mat-option *ngFor="let orderOption of orderByOptions" [value]="orderOption.value">
+          {{ orderOption.label }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
   </div>
 
+  <div class="filters-actions">
+    <button mat-raised-button class="filter-button">Filtrar</button>
+    <button mat-raised-button class="clean-button" (click)="resetFilters()">Limpiar</button>
+  </div>
 </form>

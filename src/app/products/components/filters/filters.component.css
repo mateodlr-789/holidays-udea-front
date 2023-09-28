@@ -15,22 +15,42 @@
 
 .filter {
   padding: 10px;
+  box-sizing: border-box;
 }
 
 .filters-actions {
-  margin-top: 15px;
   display: flex;
   flex-direction: row-reverse;
 }
 
 .filters-actions button {
-  background-color: #003B4A;
-  border-radius: 16px;
-  color: #FFF;
-  /* font-weight: bold; */
+  border-radius: 4px;
   font-size: 18;
   padding: 20px 35px;
+  transition: background-color 0.3s ease;
+  margin-left: 8px;
+}
+
+.filter-button {
+  background-color: #668FA0 !important;
+  color: #FFF !important;
   &:hover {
-    background-color: rgba(102, 143, 160, 0.3);
+    background-color: #003B4A !important;
+  }
+}
+
+.clean-button {
+  background-color: transparent;
+  color: #003B4A;
+  &:hover {
+    color: #FFF;
+    background-color: #668FA0;
+  }
+}
+
+@media only screen and (max-width: 860px) {
+	.filter {
+    padding-bottom: 0px;
+    width: 100%;
   }
 }

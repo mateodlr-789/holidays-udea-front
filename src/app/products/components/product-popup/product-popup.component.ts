@@ -71,7 +71,6 @@ export class ProductPopupComponent {
   }
 
   public onSave(): void {
-    console.log(this.productForm.invalid);
     if (this.productForm.invalid) {
       this.productForm.markAllAsTouched();
       return;
@@ -87,7 +86,6 @@ export class ProductPopupComponent {
       this.closePopup(true);
     });
   }
-
 
   public closePopup(reload: boolean = false): void {
     this.dialogRef.close(reload);

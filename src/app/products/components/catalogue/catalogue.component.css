@@ -49,6 +49,7 @@
   align-items: center;
   background-color: #F5F6F7;
   border: 1px solid #003B4A;
+  min-height: 300px;
   color: #003B4A;
   border-style: dashed;
   display: flex;
@@ -133,6 +134,22 @@
   margin-bottom: 16px;
 }
 
+@media only screen and (max-width: 1380px) {
+	.product-card-container {
+    width: 33%;
+  }
+}
 
+@media only screen and (max-width: 965px) {
+	.product-card-container {
+    width: 50%;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+	.product-card-container {
+    width: 100%;
+  }
+}
 
 

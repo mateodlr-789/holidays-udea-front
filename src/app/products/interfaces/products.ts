@@ -30,3 +30,9 @@ export interface UpdateProduct {
   stock:       number;
   tags:        string[] | [];
 }
+
+export interface GetProducts {
+  filterBy?: string;
+  orderBy?: string;
+  search?: string;
+}

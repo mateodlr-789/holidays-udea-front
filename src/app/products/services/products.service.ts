@@ -3,7 +3,8 @@ import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment.development';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { ApiPagination, ApiPaginationResponse, ApiResponse } from 'src/app/utils/interfaces/api';
-import { CreateProduct, Product, UpdateProduct } from '../interfaces/products';
+import { CreateProduct, GetProducts, Product, UpdateProduct } from '../interfaces/products';
+import { objectToQueryParams } from 'src/app/utils/helpers/functions';
 
 @Injectable({
   providedIn: 'root',
@@ -24,13 +25,18 @@ export class ProductsService {
 
   constructor(private http: HttpClient) {}
 
-  public getProducts(): Observable<Product[]> {
+  public getProducts(filter?: GetProducts): Observable<Product[]> {
 
-    this.http.get<ApiPaginationResponse<Product[]>>(`${this.API_URL}?limit=${this.paginationSubject.value.limit}&page=${this.paginationSubject.value.currentPage}`)
+    const queryParams = objectToQueryParams({ 
+      limit: this.paginationSubject.value.limit, 
+      page: this.paginationSubject.value.currentPage,
+      ...filter
+    });
+
+    this.http.get<ApiPaginationResponse<Product[]>>(`${this.API_URL}?${queryParams}`)
       .subscribe(response => {
         this.productsSubject.next(response.data);
         const { data, ok, errorMessage, ...pagination } = response;
-        console.log(pagination);
         this.paginationSubject.next(pagination);
       }
     );
@@ -74,6 +80,10 @@ export class ProductsService {
     if (image) formData.append('image', image);
     
     return this.http.put<ApiResponse<Product>>(`${this.API_URL}/${productId}`, formData);
+  }
+
+  public deleteProduct(productId: string) {
+    return this.http.delete<ApiResponse<Product>>(`${this.API_URL}/${productId}`);
   }
 
 }

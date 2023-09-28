@@ -95,9 +95,7 @@ export class CatalogueComponent {
   public loadProducts() {
     this.productsService.getProducts().subscribe((products) => {
       this.products = products;
-    }), (error: any) => {
-      console.log(error);
-    };
+    });
   }
 
   public handlePageEvent(e: PageEvent) {
