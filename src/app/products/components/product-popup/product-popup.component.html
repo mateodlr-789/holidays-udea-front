@@ -1,0 +1,105 @@
+<form class="popup-container" [formGroup]="productForm" (ngSubmit)="onSave()" >
+
+  <h2>{{ popupTitle }}</h2>
+
+  <mat-form-field>
+    <mat-label>Nombre del producto</mat-label>
+    <input 
+      type="text" 
+      formControlName="name"
+      matInput
+    >
+    <mat-error *ngIf="isValidField('name')">
+      {{ getFieldError('name') }}
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Sku</mat-label>
+    <input 
+      type="text" 
+      formControlName="sku"
+      matInput
+    >
+    <mat-error *ngIf="isValidField('sku')">
+      {{ getFieldError('sku') }}
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Stock</mat-label>
+    <input 
+      type="number" 
+      formControlName="stock"
+      matInput
+    >
+    <mat-error *ngIf="isValidField('stock')">
+      {{ getFieldError('stock') }}
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Precio</mat-label>
+    <input 
+      type="number" 
+      formControlName="price"
+      matInput
+    >
+    <mat-error *ngIf="isValidField('price')">
+      {{ getFieldError('price') }}
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Descripción</mat-label>
+    <textarea 
+      type="text" 
+      formControlName="description"
+      matInput
+    ></textarea>
+    <mat-error *ngIf="isValidField('description')">
+      {{ getFieldError('description') }}
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field class="example-chip-list">
+    <mat-label>Etiquetas</mat-label>
+    <mat-chip-grid #chipGrid>
+      <mat-chip-row *ngFor="let tag of tags"
+                    (removed)="removeTag(tag)"
+                    [editable]="true"
+                    (edited)="editTag(tag, $event)"
+                    [aria-description]="'Presiona para editar ' + tag">
+        {{tag}}
+        <button matChipRemove [attr.aria-label]="'Eliminar ' + tag">
+          <mat-icon>cancel</mat-icon>
+        </button>
+      </mat-chip-row>
+      <input 
+        [matChipInputFor]="chipGrid"
+        [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+        [matChipInputAddOnBlur]="true"
+        (matChipInputTokenEnd)="addTag($event)"
+      />
+    </mat-chip-grid>
+  </mat-form-field>
+
+  <div class="upload-container">
+    <div (click)="uploadInput.click()" class="upload-button">
+      <mat-icon>cloud_upload</mat-icon>
+      <span style="margin-left: 6px;">Cargar imagen</span>
+    </div>
+    <input #uploadInput (change)="uploadFile($event)" type='file' style="display:none"/>
+    <p *ngIf="image">Imagen cargada</p>
+    <mat-error *ngIf="isValidField('image')">
+      {{ getFieldError('image') }}
+    </mat-error> 
+  </div>
+
+  <div class="actions">
+    <button mat-raised-button class="cancel-button" (click)="closePopup(false)">Cancelar</button>
+    <button mat-raised-button class="save-button" type="submit">Guardar</button>
+  </div>
+
+  <br>
+</form>

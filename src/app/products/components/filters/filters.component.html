@@ -1,0 +1,32 @@
+<form class="filters-container">
+
+  <div>
+    <mat-form-field class="filter">
+      <mat-label>Email</mat-label>
+      <input
+        type="email"
+        matInput
+        placeholder="Ex. pat@example.com"
+      />
+      <mat-hint>Errors appear instantly!</mat-hint>
+      <mat-error *ngIf="false"> Please enter a valid email address </mat-error>
+      <mat-error *ngIf="false"> Email is <strong>required</strong> </mat-error>
+    </mat-form-field>
+    
+    <mat-form-field class="filter">
+      <mat-label>Email</mat-label>
+      <input
+        type="email"
+        matInput
+        placeholder="Ex. pat@example.com"
+      />
+      <mat-hint>Errors appear instantly!</mat-hint>
+      <mat-error *ngIf="false"> Please enter a valid email address </mat-error>
+      <mat-error *ngIf="false"> Email is <strong>required</strong> </mat-error>
+    </mat-form-field>
+  </div>
+  <div class="filters-actions">
+    <button mat-raised-button color="primary">Filtrar</button>
+  </div>
+
+</form>

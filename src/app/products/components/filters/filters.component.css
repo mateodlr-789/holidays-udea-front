@@ -1,0 +1,36 @@
+.filters-container {
+  display: flex;
+  flex-direction: column;
+  background-color: rgba(102, 143, 160, 0.10);
+  padding: 16px;
+  border-radius: 16px;
+  margin-bottom: 24px;
+}
+
+.filters-inputs {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.filter {
+  padding: 10px;
+}
+
+.filters-actions {
+  margin-top: 15px;
+  display: flex;
+  flex-direction: row-reverse;
+}
+
+.filters-actions button {
+  background-color: #003B4A;
+  border-radius: 16px;
+  color: #FFF;
+  /* font-weight: bold; */
+  font-size: 18;
+  padding: 20px 35px;
+  &:hover {
+    background-color: rgba(102, 143, 160, 0.3);
+  }
+}
