@@ -30,6 +30,10 @@
   }
 }
 
+.card-data {
+  height: 500px;
+}
+
 .product-card {
   border-radius: 16px;
   box-sizing: border-box;
@@ -64,7 +68,6 @@
 }
 
 .create-product-card h2 {
-  word-break: break-all;
   margin-top: 10px;
   font-weight: bold;
 }
@@ -94,6 +97,12 @@
   background-color: #F5F6F7;
   padding-top: 0px;
   padding: 10px;
+  height: 200px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border-bottom-left-radius: 16px;
+  border-bottom-right-radius: 16px;
 }
 
 .card-actions {

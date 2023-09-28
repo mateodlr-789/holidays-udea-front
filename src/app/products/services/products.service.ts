@@ -30,6 +30,7 @@ export class ProductsService {
       .subscribe(response => {
         this.productsSubject.next(response.data);
         const { data, ok, errorMessage, ...pagination } = response;
+        console.log(pagination);
         this.paginationSubject.next(pagination);
       }
     );

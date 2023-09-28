@@ -55,7 +55,7 @@ export class CatalogueComponent {
   //   // Agrega más productos aquí
   // ];
   public products: Product[] = [];
-  public readonly pagination: ApiPagination = {
+  public pagination: ApiPagination = {
     total: 0,
     totalPages: 1,
     hasMorePages: false,
@@ -72,6 +72,9 @@ export class CatalogueComponent {
 
   ngOnInit(): void {
     this.loadProducts();
+    this.productsService.pagination$.subscribe((pagination) => {
+      this.pagination = pagination;
+    })
   }
 
   public async createProduct() {
