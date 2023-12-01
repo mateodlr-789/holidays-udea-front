@@ -1,0 +1,30 @@
+<main class="classmain">
+    <div class="isHolidayContainer">
+        <div>
+            <input (dateChange)="onDateChange($event)"   matInput [matDatepicker]="picker">
+            <mat-hint>MM/DD/YYYY</mat-hint>
+            <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+
+            <span>{{isHoliday}}</span>
+        </div>
+        <div class="isListHolidaysContainer">
+            <mat-form-field>
+                <mat-label>Selecciona un año</mat-label>
+                <mat-select [(ngModel)]="selectedYear" (selectionChange)="onYearSelectionChange()">
+                  <mat-option *ngFor="let year of years" [value]="year">{{ year }}</mat-option>
+                </mat-select>
+            </mat-form-field>
+            <div *ngIf="holidays.length > 0">
+                <h2>Festivos para el año {{ selectedYear }}</h2>
+                <ul>
+                    <li *ngFor="let holiday of holidays">{{ holiday }}</li>
+                </ul>
+            </div>
+            
+            <div *ngIf="holidays.length === 0">
+                <p>No hay festivos para el año seleccionado.</p>
+            </div>
+        </div>
+    </div>
+</main>
